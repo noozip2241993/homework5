@@ -1,4 +1,3 @@
-import os
 FILENAME1 = 'scores.txt'
 READ_MODE = 'r'
 FILENAME2 = 'log.txt'
@@ -25,5 +24,9 @@ with names_file1, names_file2:
                 total_score = total_score + int(info[1])
         except ValueError as error:
             names_file2.write(f'Bad score value for {info[0]}, ignored.\n')
-    names_file2.write(f'The class average is {total_score/total_student:.0f} for {total_student} students.')
-    print(f'The class average is {total_score/total_student:.0f} for {total_student} students.')
+    if total_student != 0:
+        names_file2.write(f'The class average is {total_score/total_student:.0f} for {total_student} students.')
+        print(f'The class average is {total_score/total_student:.0f} for {total_student} students.')
+    else:
+        names_file2.write(f'ZeroDivisionError: divide by zero exception')
+        print(f'ZeroDivisionError: divide by zero exception')
